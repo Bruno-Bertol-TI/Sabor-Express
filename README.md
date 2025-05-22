@@ -41,9 +41,10 @@ python app.py
 | `voltar_ao_menu_principal()`  | Aguarda entrada e retorna ao menu principal                               |
 | `opcao_invalida()`            | Exibe mensagem de erro e retorna ao menu principal                        |
 | `exibir_subtitulo()`          | Mostra um subtítulo formatado para cada operação                          |
-| `cadastrar_novo_restaurante()`| Solicita nome, categoria e condicao do restaurante e o adiciona à uma lista de dicionarios|
-| `listar_restaurante()`        | Exibe nome, categoria e condicao detodos os restaurantes cadastrados      |
-| `ativar_restaurante()`        | Exibe nome, categoria e condicao detodos os restaurantes cadastrados e solicita indice para ativar restaurant|
+| `cadastrar_novo_restaurante()`| Solicita nome e categoria do restaurante e o adiciona à uma lista de dicionários|
+| `listagem_restaurantes()`     | Exibe em uma tabela organizada, nome, categoria e condicao dos restaurantes já cadastrados|
+| `listar_restaurante()`        | exibe a função `listagem_restaurantes()`                                  |
+| `ativar_restaurante()`        | exibe a função `listagem_restaurantes()` e solicita indice para ativar restaurante|
 | `finalizar_app()`             | Exibe mensagem de finalização do app                                      |
 | `escolher_opcoes()`           | Lê a escolha do usuário e chama a função correspondente                   |
 
