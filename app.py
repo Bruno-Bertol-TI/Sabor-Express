@@ -3,10 +3,10 @@ import os
 lista_restaurantes = [
     {'nome': 'dona brida', 'categoria': 'brasileira', 'ativo': False}, 
     {'nome': 'don juan', 'categoria': 'mexicana', 'ativo': False},
-    {'nome': 'teste1', 'categoria': 'teste1', 'ativo': False},
-    {'nome': 'teste2', 'categoria': 'teste2', 'ativo': False},
-    {'nome': 'teste3', 'categoria': 'teste3', 'ativo': False},
-    {'nome': 'teste4', 'categoria': 'teste4', 'ativo': False}
+    {'nome': 'teste_1', 'categoria': 'teste_1', 'ativo': False},
+    {'nome': 'teste_2', 'categoria': 'teste_2', 'ativo': False},
+    {'nome': 'teste_3', 'categoria': 'teste_3', 'ativo': False},
+    {'nome': 'teste_4', 'categoria': 'teste_4', 'ativo': False}
     ]
 
 def exibir_nome_do_programa():
@@ -71,6 +71,34 @@ def listar_restaurante():
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
 
+def ativar_restaurante():
+    exibir_subtitulo('Ativar Restaurante')
+    for indice, restautante in enumerate(lista_restaurantes):
+        print(f'Restaurante {[indice]}')
+        nome_restaurante = restautante['nome']
+        categoria_restaurante = restautante['categoria']
+        condicao_restaurante = 'Ativo' if restautante['ativo'] == True else 'Inativo'
+        print(10 * '=')
+        print('Restaurante: ', nome_restaurante)
+        print(10 * '-')
+        print('Categoria: ', categoria_restaurante)
+        print(10 * '-')
+        print('Condição: ', condicao_restaurante)
+        print(10 * '=')
+    
+    print()
+    try:
+        ativacao = int(input('Digite o número do restaurante que deseja ativar: '))
+        lista_restaurantes[ativacao]['ativo'] = True
+
+        mensagem_ativação = ' ativado com Sucesso'if lista_restaurantes[ativacao]['ativo'] == True else f' não foi ativado'
+        print(f'\nRestaurante {lista_restaurantes[ativacao]['nome']} {mensagem_ativação}')
+    except:
+        opcao_invalida()
+
+    voltar_ao_menu_principal()
+
+        
 def finalizar_app():
     exibir_subtitulo('Finalizar APP')
 
@@ -89,8 +117,7 @@ def escolher_opcoes():
         elif escolha_usuario == 2:
             listar_restaurante()
         elif escolha_usuario == 3:
-            #ativar_restaurante()
-            ...
+            ativar_restaurante()
         elif escolha_usuario == 4:
             finalizar_app()
         else:
