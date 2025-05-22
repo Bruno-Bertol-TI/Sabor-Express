@@ -1,7 +1,13 @@
 import os
 
-lista_restaurantes = [{'nome': 'dona brida', 'categoria': 'brasileira', 'ativo': False}, 
-                        {'nome': 'don juan', 'categoria': 'mexicana', 'ativo': True}]
+lista_restaurantes = [
+    {'nome': 'dona brida', 'categoria': 'brasileira', 'ativo': False}, 
+    {'nome': 'don juan', 'categoria': 'mexicana', 'ativo': False},
+    {'nome': 'teste1', 'categoria': 'teste1', 'ativo': False},
+    {'nome': 'teste2', 'categoria': 'teste2', 'ativo': False},
+    {'nome': 'teste3', 'categoria': 'teste3', 'ativo': False},
+    {'nome': 'teste4', 'categoria': 'teste4', 'ativo': False}
+    ]
 
 def exibir_nome_do_programa():
     print("""
