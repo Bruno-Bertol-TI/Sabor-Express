@@ -1,6 +1,7 @@
 import os
 
-lista_restaurantes = [1, 2, 3]
+lista_restaurantes = [{'nome': 'dona brida', 'categoria': 'brasileira', 'ativo': False}, 
+                        {'nome': 'don juan', 'categoria': 'mexicana', 'ativo': True}]
 
 def exibir_nome_do_programa():
     print("""
@@ -14,7 +15,7 @@ def exibir_nome_do_programa():
     
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
-    print('2. Listar restaurante')
+    print('2. Listar restaurantes')
     print('3. Ativar restaurante')
     print('4. Sair \n')
     
@@ -40,18 +41,26 @@ def cadastrar_novo_restaurante():
 
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    categoria_do_restaurante = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
     limpar_tela()
-    lista_restaurantes.append(nome_do_restaurante)
-    print(f'o restaurante {lista_restaurantes[-1]} foi cadastrado com sucesso')
-
+    dados_cadastrados = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
+    lista_restaurantes.append(dados_cadastrados)
     voltar_ao_menu_principal()
 
 def listar_restaurante():
     exibir_subtitulo('Listar restaurantes')
-    print(10 * '-')
-    for restautante in lista_restaurantes:
-        print(restautante)
+    for indice, restautante in enumerate(lista_restaurantes):
+        print(f'Restaurante {indice}')
+        nome_restaurante = restautante['nome']
+        categoria_restaurante = restautante['categoria']
+        condicao_restaurante = 'Ativo' if restautante['ativo'] == True else 'Inativo'
+        print(10 * '=')
+        print(nome_restaurante)
         print(10 * '-')
+        print(categoria_restaurante)
+        print(10 * '-')
+        print(condicao_restaurante)
+        print(10 * '=', '\n')
 
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
