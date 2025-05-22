@@ -29,7 +29,7 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def voltar_ao_menu_principal():
-    input('\nDigite uma tecla para voltar ao menu')
+    input('\nDigite uma tecla para voltar ao menu: ')
     limpar_tela()
     main()
 
@@ -48,7 +48,6 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria_do_restaurante = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
-    limpar_tela()
     dados_cadastrados = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
     lista_restaurantes.append(dados_cadastrados)
     voltar_ao_menu_principal()
@@ -93,12 +92,7 @@ def finalizar_app():
     exibir_subtitulo('Finalizar APP')
 
 def escolher_opcoes():
-    print(10 * '--')
-    print('Exemplo:\nDigite o número da opção escolhida: 1.')
-    print('Opção 1 escolhida: Cadastrar restaurante.')
-    print(10 * '--')
     try:
-        print()
         escolha_usuario = int(input('Digite o número da opção escolhida: '))
         limpar_tela()
 
