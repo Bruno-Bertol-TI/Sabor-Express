@@ -40,8 +40,8 @@ python app.py
 | `voltar_ao_menu_principal()`  | Aguarda entrada e retorna ao menu principal                               |
 | `opcao_invalida()`            | Exibe mensagem de erro e retorna ao menu principal                        |
 | `exibir_subtitulo()`          | Mostra um subtítulo formatado para cada operação                          |
-| `cadastrar_novo_restaurante()`| Solicita o nome de um restaurante e o adiciona à lista                    |
-| `listar_restaurante()`        | Exibe todos os restaurantes cadastrados                                   |
+| `cadastrar_novo_restaurante()`| Solicita nome, categoria e condicao do restaurante e o adiciona à uma lista de dicionarios
+| `listar_restaurante()`        | Exibe nome, categoria e condicao detodos os restaurantes cadastrados
 | `finalizar_app()`             | Exibe mensagem de finalização do app                                      |
 | `escolher_opcoes()`           | Lê a escolha do usuário e chama a função correspondente                   |
 
@@ -63,7 +63,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 ## 📌 Melhorias Futuras
 
-- [ ] Implementar funcionalidade de ativar/desativar restaurantes  
+- [ ] Implementar funcionalidade de ativar/desativar restaurantes  -  EM DESENVOLVIMENTO
 - [ ] Armazenamento persistente em arquivo ou banco de dados  
 - [ ] Interface gráfica com Tkinter ou web com Flask/Django  
 
