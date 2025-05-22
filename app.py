@@ -53,39 +53,30 @@ def cadastrar_novo_restaurante():
     lista_restaurantes.append(dados_cadastrados)
     voltar_ao_menu_principal()
 
+def listagem_restaurantes():
+    linha_divisoria_listagem_restaurantes = '|' + 125 * '-' + '|'
+
+    print(linha_divisoria_listagem_restaurantes)
+    print(f"|{'ID':^25} | {'Restaurante':^35} | {'Categoria':^30} | {'Condição':^25} |")
+    print(linha_divisoria_listagem_restaurantes)
+    
+    for i, restaurante in enumerate(lista_restaurantes):
+        nome = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo_inativo = 'Ativo' if restaurante['ativo'] == True else 'Inativo'
+        ativo = ativo_inativo
+        print(f"|{i:^25} | {nome:<35} | {categoria:<30} | {ativo:<25} |")
+        print(linha_divisoria_listagem_restaurantes)
+
 def listar_restaurante():
     exibir_subtitulo('Listar restaurantes')
-    for indice, restautante in enumerate(lista_restaurantes):
-        print(f'Restaurante {indice}')
-        nome_restaurante = restautante['nome']
-        categoria_restaurante = restautante['categoria']
-        condicao_restaurante = 'Ativo' if restautante['ativo'] == True else 'Inativo'
-        print(10 * '=')
-        print(nome_restaurante)
-        print(10 * '-')
-        print(categoria_restaurante)
-        print(10 * '-')
-        print(condicao_restaurante)
-        print(10 * '=', '\n')
-
+    listagem_restaurantes()
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
 
 def ativar_restaurante():
     exibir_subtitulo('Ativar Restaurante')
-    for indice, restautante in enumerate(lista_restaurantes):
-        print(f'Restaurante {[indice]}')
-        nome_restaurante = restautante['nome']
-        categoria_restaurante = restautante['categoria']
-        condicao_restaurante = 'Ativo' if restautante['ativo'] == True else 'Inativo'
-        print(10 * '=')
-        print('Restaurante: ', nome_restaurante)
-        print(10 * '-')
-        print('Categoria: ', categoria_restaurante)
-        print(10 * '-')
-        print('Condição: ', condicao_restaurante)
-        print(10 * '=')
-    
+    listagem_restaurantes()   
     print()
     try:
         ativacao = int(input('Digite o número do restaurante que deseja ativar: '))
@@ -97,8 +88,7 @@ def ativar_restaurante():
         opcao_invalida()
 
     voltar_ao_menu_principal()
-
-        
+    
 def finalizar_app():
     exibir_subtitulo('Finalizar APP')
 
