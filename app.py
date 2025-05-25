@@ -10,6 +10,7 @@ lista_restaurantes = [
     ]
 
 def exibir_nome_do_programa():
+    '''Exibe o nome do programa'''
     print("""
             '░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
             ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -20,31 +21,36 @@ def exibir_nome_do_programa():
             """)
     
 def exibir_opcoes():
+    '''Exibe funções que há no sistema'''
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
     print('3. Ativar restaurante')
     print('4. Sair \n')
     
 def limpar_tela():
+    '''Limpa a tela em multiplataformas Linux/MacOS/WINDOWS'''
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def voltar_ao_menu_principal():
+    '''Retorna ao menu principal'''
     input('\nDigite uma tecla para voltar ao menu: ')
     limpar_tela()
     main()
 
 def opcao_invalida():
+    '''exibe mensagem de erro e retorna ao menu principal'''
     limpar_tela()
     print('Opção invalida!')
     voltar_ao_menu_principal()
 
 def exibir_subtitulo(texto):
+    '''Exibe o sub titulo de cada função'''
     limpar_tela()
     print(texto)
     print()
 
 def cadastrar_novo_restaurante():
-
+    '''Cadastra Restaurantes no sistema'''
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria_do_restaurante = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
@@ -53,6 +59,7 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu_principal()
 
 def listagem_restaurantes():
+    '''Cria uma tabela basica listando restaurantes cadastrados'''
     linha_divisoria_listagem_restaurantes = '|' + 125 * '-' + '|'
 
     print(linha_divisoria_listagem_restaurantes)
@@ -68,12 +75,14 @@ def listagem_restaurantes():
         print(linha_divisoria_listagem_restaurantes)
 
 def listar_restaurante():
+    '''Exibe a função `listagem_restaurantes()` e retorna ao menu principal'''
     exibir_subtitulo('Listar restaurantes')
     listagem_restaurantes()
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
 
 def ativar_restaurante():
+    '''exibe lista de restaurantes e solicita Id para ativação'''
     exibir_subtitulo('Ativar Restaurante')
     listagem_restaurantes()   
     print()
@@ -89,9 +98,11 @@ def ativar_restaurante():
     voltar_ao_menu_principal()
     
 def finalizar_app():
+    '''Finaliza o app'''
     exibir_subtitulo('Finalizar APP')
 
 def escolher_opcoes():
+    '''Menu Principal, usuario escolher função que deseja trabalhar'''
     try:
         escolha_usuario = int(input('Digite o número da opção escolhida: '))
         limpar_tela()
@@ -110,9 +121,11 @@ def escolher_opcoes():
         opcao_invalida()
 
 def main():
+    '''ordenação e inicialização do sistema'''
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcoes()
 
 if __name__ == '__main__':
+    '''Inicializando com verificação'''
     main()
