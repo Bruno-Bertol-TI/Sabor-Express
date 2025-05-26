@@ -10,7 +10,7 @@ lista_restaurantes = [
     ]
 
 def exibir_nome_do_programa():
-    '''Exibe o nome do programa'''
+    '''Exibe o nome do sistema de forma estilizada para a interação com o usuário'''
     print("""
             '░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
             ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -21,36 +21,82 @@ def exibir_nome_do_programa():
             """)
     
 def exibir_opcoes():
-    '''Exibe funções que há no sistema'''
+    '''
+    Exibe funções disponiveis no menu principal do sistema
+
+    - Quais são elas?
+    1. Cadastrar Restaurante
+    2. Listar Restaurantes
+    3. Ativar Restaurante
+    4. Sair -> Encerra a execução do sistema
+    
+    '''
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
     print('3. Ativar restaurante')
     print('4. Sair \n')
     
 def limpar_tela():
-    '''Limpa a tela em multiplataformas Linux/MacOS/WINDOWS'''
+    '''
+    Limpa a tela em multiplataformas Linux/MacOS/WINDOWS
+    
+    - função usa 'cls' para Windows e 'clear' para as demais plataformas 
+
+    '''
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def voltar_ao_menu_principal():
-    '''Retorna ao menu principal'''
+    '''
+    Retorna ao menu principal
+    
+    - inputs:]
+        + Apenas uma trava para exibir outputs anteriores ao uso dessa função
+
+    usa a função 'limpar_tela()' multiplataformas, e, 
+    usa a função main para retornar ao inicio do programa
+    '''
     input('\nDigite uma tecla para voltar ao menu: ')
     limpar_tela()
     main()
 
 def opcao_invalida():
-    '''exibe mensagem de erro e retorna ao menu principal'''
+    '''
+    Função resposavel para alertar entradas de dados invalidos.
+
+    limpa a tela com função 'limpar_tela()',
+    exibe mensagem de erro, e, 
+    retorna ao menu principal usando a função 'voltar_ao_menu_principal()'
+    '''
     limpar_tela()
     print('Opção invalida!')
     voltar_ao_menu_principal()
 
 def exibir_subtitulo(texto):
-    '''Exibe o sub titulo de cada função'''
+    '''
+    Função estética para apenas informar qual titulo da função selecionada.
+
+    função limpa tela com a função 'limpar_tela()',
+    e usando o argumento fornecido na chamada retorna o subtitulo da função que está em execução
+    '''
     limpar_tela()
     print(texto)
     print()
 
 def cadastrar_novo_restaurante():
-    '''Cadastra Restaurantes no sistema'''
+    '''
+    Função responsavel por cadastrar restaurante usando inputs abaixo.
+
+    - Inputs:
+        * NOME DO RESTAURANTE
+        * CATEGORIA DO RESTAURANTE
+
+    - Efeito colateral (OUTPUT):
+        Exibe subtitulo,
+        Armazena dados na lista de dicionarios 'lista_restaurantes'
+
+    - Essa função não retorna outputs
+    
+    '''
     exibir_subtitulo('Cadastrar novo restaurante')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria_do_restaurante = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
@@ -59,7 +105,18 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu_principal()
 
 def listagem_restaurantes():
-    '''Cria uma tabela basica listando restaurantes cadastrados'''
+    '''
+    Função responsavel por listar em formato de matriz todos os restaurantes cadastrados.
+
+    - outputs:
+        * indice,
+        * nome,
+        * categoria,
+        * condição
+        -*linhas divisorias para melhor organização - 'linha_divisoria_listagem_restaurantes'
+
+    - Função usa FOR IN para percorrer dados armazenado durante execução em lista de dicionarios
+    '''
     linha_divisoria_listagem_restaurantes = '|' + 125 * '-' + '|'
 
     print(linha_divisoria_listagem_restaurantes)
@@ -75,14 +132,42 @@ def listagem_restaurantes():
         print(linha_divisoria_listagem_restaurantes)
 
 def listar_restaurante():
-    '''Exibe a função `listagem_restaurantes()` e retorna ao menu principal'''
+    '''
+    Função responsavel por apenas exibir dados armazenados
+
+    - Funções chamadas: 
+        * exibir_subtitulo('Listar restaurantes') - usando argumento
+        * listagem_restaurantes()
+        * voltar_ao_menu_principal()
+
+    - outputs:
+        * Todos restaurantes cadastrados foram listado acima!
+        *-Efeitos Colaterais: 
+            * exibir_subtitulo('Listar restaurantes') - usando argumento
+            * listagem_restaurantes()
+
+    '''
     exibir_subtitulo('Listar restaurantes')
     listagem_restaurantes()
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
 
 def ativar_restaurante():
-    '''exibe lista de restaurantes e solicita Id para ativação'''
+    '''
+    Função responsavel por exibir dados armazenados e realizar ativação de restaurante de acordo com entrada fornecida pelo usuário.
+
+    - Funções chamadas: 
+        * exibir_subtitulo('Ativar Restaurante') - usando argumento
+        * listagem_restaurantes()
+        * voltar_ao_menu_principal()
+
+        - inputs: 
+            *Ativação
+
+        - outputs: 
+            * Restaurante {lista_restaurantes[ativacao]['nome']} {mensagem_ativação}
+    
+    '''
     exibir_subtitulo('Ativar Restaurante')
     listagem_restaurantes()   
     print()
@@ -102,7 +187,12 @@ def finalizar_app():
     exibir_subtitulo('Finalizar APP')
 
 def escolher_opcoes():
-    '''Menu Principal, usuario escolher função que deseja trabalhar'''
+    '''
+    Menu Principal, usuario escolher função que deseja trabalhar
+    
+    - input: 
+        *escolha_usuario
+    '''
     try:
         escolha_usuario = int(input('Digite o número da opção escolhida: '))
         limpar_tela()
