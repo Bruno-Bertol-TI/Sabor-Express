@@ -175,47 +175,47 @@ def status_atividade_restaurantes():
         * listagem_restaurantes()
         * voltar_ao_menu_principal()
         * limpar_tela()
-    '''
+    '''   
 
-    exibir_subtitulo('Ativar/Desativar Restaurante')
-    listagem_restaurantes()   
-    print()
+    while True: 
+        exibir_subtitulo('Ativar/Desativar Restaurante')
+        listagem_restaurantes()   
+        print('\nOpções disponiveis. Use o número que representa a opção!\n')
+        print(' 1. Ativar restaurante.')
+        print(' 2. Desativar restaurante.')
+        print(' 3. Retornar ao Menu Principal.\n')
+        try:
+            opcao_escolhida = int(input('Insira a opção escolhida: '))
+            if opcao_escolhida not in [1, 2, 3]:
+                limpar_tela()
+                print('\nOpção invalida, tente novamente!\n')
+                input('Tecle [Enter] para retornar ao menu.')
+                continue
+            elif opcao_escolhida in [1, 2]:
+                ativar = True if opcao_escolhida == 1 else False
+            elif opcao_escolhida == 3:
+                voltar_ao_menu_principal()
+        except ValueError:
+            print('\nEntrada Inválida, digite um número!\n')
+            continue
 
-    def escolha_invalida():
-        print('\nOpção escolhida é invalida, tente novamente!\n')
-        input('Aperte enter para retornar ao inicio desta função: ')
-        limpar_tela()
-        return status_atividade_restaurantes()
+        ativar_desativar = 'ativar' if ativar else 'desativar'
 
-    def exibir_opcoes_ativ_desativ():
-        print('1. Ativar')
-        print('2. Desativar')
-        print('3. Menu Principal\n')
-    
-    exibir_opcoes_ativ_desativ()
+        while True:    
+            try:
+                limpar_tela()
+                listagem_restaurantes()
+                print(f'\nVocê escolheu {ativar_desativar} um restaurante!\n')
+                id_restaurante = int(input(f'insira o ID do restaurante que deseja {ativar_desativar}: '))
+            except ValueError:
+                print('\n ID inválido, Tente um ID existente na lista! \n')
+                continue
 
-    try:
-        menu_ativar_desativar_restaurante = int(input('Digite a opção que deseja executar: '))
+            lista_restaurantes[id_restaurante]['ativo'] = True if ativar else False
+            mensagem_formatada_com_sucesso = 'ativado com Sucesso'if lista_restaurantes[id_restaurante]['ativo'] == True else f'desativado com sucesso'
+            print(f'\nO restaurante "{lista_restaurantes[id_restaurante]['nome']}" foi {mensagem_formatada_com_sucesso}')
 
-        if menu_ativar_desativar_restaurante == 3:
             voltar_ao_menu_principal()
-
-        ativar = True if menu_ativar_desativar_restaurante == 1 else False        
-    except:
-        escolha_invalida()
-
-    palavra_ativar_desativar = 'ativar' if ativar else 'desativar'
-
-    try:
-        id_ativar_desativar_restaurante = int(input(f'insira o ID do restaurante que deseja {palavra_ativar_desativar}: '))
-    except:
-        escolha_invalida()
-
-    lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] = True if ativar else False
-    mensagem_ativacao_desativacao = 'ativado com Sucesso'if lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] == True else f'desativado com sucesso'
-    print(f'\nO restaurante "{lista_restaurantes[id_ativar_desativar_restaurante]['nome']}" foi {mensagem_ativacao_desativacao}')
-
-    voltar_ao_menu_principal()
     
 def finalizar_app():
     '''Finaliza o app'''
