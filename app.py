@@ -146,7 +146,7 @@ def listar_restaurante():
     voltar_ao_menu_principal()
 
 def status_atividade_restaurantes():
-    
+
     while True: 
         exibir_subtitulo('Ativar/Desativar Restaurante')
         listagem_restaurantes()   
@@ -163,6 +163,18 @@ def status_atividade_restaurantes():
                 continue
             elif opcao_escolhida in [1, 2]:
                 ativar = True if opcao_escolhida == 1 else False
+                limpar_tela()
+                if ativar:
+                    todos_ativos = all(restaurante['ativo'] for restaurante in lista_restaurantes)
+                    if todos_ativos:
+                        print('todos os restaurantes estão ativos!')
+                        voltar_ao_menu_principal()
+                else:
+                    todos_inativos = all(not restaurante['ativo'] for restaurante in lista_restaurantes)
+                    if todos_inativos:
+                        print('todos os restaurantes estão inativos!')
+                        voltar_ao_menu_principal()
+                    
             elif opcao_escolhida == 3:
                 voltar_ao_menu_principal()
         except ValueError:
