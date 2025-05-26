@@ -1,13 +1,6 @@
 import os
 
-lista_restaurantes = [
-    {'nome': 'dona brida', 'categoria': 'brasileira', 'ativo': False}, 
-    {'nome': 'don juan', 'categoria': 'mexicana', 'ativo': False},
-    {'nome': 'teste_1', 'categoria': 'teste_1', 'ativo': False},
-    {'nome': 'teste_2', 'categoria': 'teste_2', 'ativo': False},
-    {'nome': 'teste_3', 'categoria': 'teste_3', 'ativo': False},
-    {'nome': 'teste_4', 'categoria': 'teste_4', 'ativo': False}
-    ]
+lista_restaurantes = []
 
 def exibir_nome_do_programa():
     '''Exibe o nome do sistema de forma estilizada para a interação com o usuário'''
