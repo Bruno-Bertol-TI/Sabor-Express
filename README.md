@@ -31,21 +31,21 @@ python app.py
 
 ## 📂 Estrutura do Código
 
-| Função                         | Descrição                                                                |
-|-------------------------------|---------------------------------------------------------------------------|
-| `main()`                      | Ponto de entrada do app                                                   |
-| `exibir_nome_do_programa()`   | Exibe o banner ASCII com o nome do programa                               |
-| `exibir_opcoes()`             | Mostra o menu principal com as opções disponíveis                         |
-| `limpar_tela()`               | Limpa a tela do terminal (Windows: `cls`, Linux/macOS: `clear`)           |
-| `voltar_ao_menu_principal()`  | Aguarda entrada e retorna ao menu principal                               |
-| `opcao_invalida()`            | Exibe mensagem de erro e retorna ao menu principal                        |
-| `exibir_subtitulo()`          | Mostra um subtítulo formatado para cada operação                          |
-| `cadastrar_novo_restaurante()`| Solicita nome e categoria do restaurante e o adiciona à uma lista de dicionários|
-| `listagem_restaurantes()`     | Exibe em uma tabela organizada, nome, categoria e condicao dos restaurantes já cadastrados|
-| `listar_restaurante()`        | exibe a função `listagem_restaurantes()`                                  |
-| `status_atividade_restaurantes()`| exibe a função `listagem_restaurantes()` e solicita uma opcao de tres diponiveis, ativar, desativar e retornar ao menu principal. Após escolher uma opção o usuario poderá ativar ou desativar o restaurante apenas fornecendo o ID do restaurante ou retornou ao menu principal|
-| `finalizar_app()`             | Exibe mensagem de finalização do app                                      |
-| `escolher_opcoes()`           | Lê a escolha do usuário e chama a função correspondente                   |
+| Função                          | Descrição                                                                 |
+|--------------------------------|---------------------------------------------------------------------------|
+| `main()`                       | Ponto de entrada do app                                                   |
+| `exibir_nome_do_programa()`    | Exibe o banner ASCII com o nome do programa                               |
+| `exibir_opcoes()`              | Mostra o menu principal com as opções disponíveis                         |
+| `limpar_tela()`                | Limpa a tela do terminal (Windows: `cls`, Linux/macOS: `clear`)           |
+| `voltar_ao_menu_principal()`   | Aguarda entrada e retorna ao menu principal                               |
+| `opcao_invalida()`             | Exibe mensagem de erro e retorna ao menu principal                        |
+| `exibir_subtitulo()`           | Mostra um subtítulo formatado para cada operação                          |
+| `cadastrar_novo_restaurante()` | Solicita nome e categoria do restaurante e o adiciona à lista             |
+| `listagem_restaurantes()`      | Exibe em tabela nome, categoria e condição dos restaurantes cadastrados   |
+| `listar_restaurante()`         | Chama a função `listagem_restaurantes()`                                  |
+| `status_atividade_restaurantes()` | Exibe os restaurantes e permite ativar/desativar via ID                  |
+| `finalizar_app()`              | Exibe mensagem de finalização do app                                      |
+| `escolher_opcoes()`            | Lê a escolha do usuário e chama a função correspondente                   |
 
 ---
 
@@ -73,6 +73,4 @@ os.system('cls' if os.name == 'nt' else 'clear')
 ## 🧑‍💻 Autor
 
 Desenvolvido por **Bruno Bertol**  
-🔗 Contato: [LinkedIn](https://www.linkedin.com/in/bruno-bertol-894267209)
-
----
+🔗 [LinkedIn](https://www.linkedin.com/in/bruno-bertol-894267209)
