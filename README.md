@@ -11,8 +11,7 @@ Este é um aplicativo simples em Python para cadastro e listagem de restaurantes
 - ✅ Menu interativo com as opções:
   - Cadastrar novo restaurante
   - Listar restaurantes cadastrados
-  - Ativar restaurante
-  - (Planejado) Desativar restaurante
+  - Ativar/Desativar restaurante
   - Sair
 
 ---
@@ -44,7 +43,7 @@ python app.py
 | `cadastrar_novo_restaurante()`| Solicita nome e categoria do restaurante e o adiciona à uma lista de dicionários|
 | `listagem_restaurantes()`     | Exibe em uma tabela organizada, nome, categoria e condicao dos restaurantes já cadastrados|
 | `listar_restaurante()`        | exibe a função `listagem_restaurantes()`                                  |
-| `ativar_restaurante()`        | exibe a função `listagem_restaurantes()` e solicita indice para ativar restaurante|
+| `status_atividade_restaurantes()`| exibe a função `listagem_restaurantes()` e solicita uma opcao de tres diponiveis, ativar, desativar e retornar ao menu principal. Após escolher uma opção o usuario poderá ativar ou desativar o restaurante apenas fornecendo o ID do restaurante ou retornou ao menu principal|
 | `finalizar_app()`             | Exibe mensagem de finalização do app                                      |
 | `escolher_opcoes()`           | Lê a escolha do usuário e chama a função correspondente                   |
 
@@ -66,7 +65,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 ## 📌 Melhorias Futuras
 
-- [ ] Implementar funcionalidade de desativar restaurantes mesclado com ativar restaurantes  -  EM DESENVOLVIMENTO
 - [ ] Armazenamento persistente em arquivo ou banco de dados
 - [ ] Interface gráfica com Tkinter ou web com Flask/Django
 
