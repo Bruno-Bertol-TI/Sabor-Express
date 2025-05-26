@@ -152,12 +152,12 @@ def listar_restaurante():
     print('\nTodos restaurantes cadastrados foram listado acima!')
     voltar_ao_menu_principal()
 
-def ativar_restaurante():
+def status_atividade_restaurantes():
     '''
-    Função responsavel por exibir dados armazenados e realizar ativação de restaurante de acordo com entrada fornecida pelo usuário.
+    Função responsavel por exibir dados armazenados e realizar ativação/desativação de restaurante de acordo com entrada fornecida pelo usuário.
 
     - Funções chamadas: 
-        * exibir_subtitulo('Ativar Restaurante') - usando argumento
+        * exibir_subtitulo('Ativar/Desativar Restaurante') - usando argumento
         * listagem_restaurantes()
         * voltar_ao_menu_principal()
 
@@ -168,17 +168,44 @@ def ativar_restaurante():
             * Restaurante {lista_restaurantes[ativacao]['nome']} {mensagem_ativação}
     
     '''
-    exibir_subtitulo('Ativar Restaurante')
+
+    exibir_subtitulo('Ativar/Desativar Restaurante')
     listagem_restaurantes()   
     print()
-    try:
-        ativacao = int(input('Digite o número do restaurante que deseja ativar: '))
-        lista_restaurantes[ativacao]['ativo'] = True
 
-        mensagem_ativação = ' ativado com Sucesso'if lista_restaurantes[ativacao]['ativo'] == True else f' não foi ativado'
-        print(f'\nRestaurante {lista_restaurantes[ativacao]['nome']} {mensagem_ativação}')
+    def escolha_invalida():
+        print('\nOpção escolhida é invalida, tente novamente!\n')
+        input('Aperte enter para retornar ao inicio desta função: ')
+        limpar_tela()
+        return status_atividade_restaurantes()
+
+    def exibir_opcoes_ativ_desativ():
+        print('1. Ativar')
+        print('2. Desativar')
+        print('3. Menu Principal\n')
+    
+    exibir_opcoes_ativ_desativ()
+
+    try:
+        menu_ativar_desativar_restaurante = int(input('Digite a opção que deseja executar: '))
+
+        if menu_ativar_desativar_restaurante == 3:
+            voltar_ao_menu_principal()
+
+        ativar = True if menu_ativar_desativar_restaurante == 1 else False        
     except:
-        opcao_invalida()
+        escolha_invalida()
+
+    palavra_ativar_desativar = 'ativar' if ativar else 'desativar'
+
+    try:
+        id_ativar_desativar_restaurante = int(input(f'Digite o ID do restaurante que deseja {palavra_ativar_desativar}: '))
+    except:
+        escolha_invalida()
+
+    lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] = True if ativar else False
+    mensagem_ativacao_desativacao = 'ativado com Sucesso'if lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] == True else f'desativado com sucesso'
+    print(f'\nRestaurante {lista_restaurantes[id_ativar_desativar_restaurante]['nome']} {mensagem_ativacao_desativacao}')
 
     voltar_ao_menu_principal()
     
@@ -202,7 +229,7 @@ def escolher_opcoes():
         elif escolha_usuario == 2:
             listar_restaurante()
         elif escolha_usuario == 3:
-            ativar_restaurante()
+            status_atividade_restaurantes()
         elif escolha_usuario == 4:
             finalizar_app()
         else:
