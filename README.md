@@ -66,7 +66,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 ## 📌 Melhorias Futuras
 
-- [ ] Implementar funcionalidade de desativar restaurantes  -  EM DESENVOLVIMENTO
+- [ ] Implementar funcionalidade de desativar restaurantes mesclado com ativar restaurantes  -  EM DESENVOLVIMENTO
 - [ ] Armazenamento persistente em arquivo ou banco de dados
 - [ ] Interface gráfica com Tkinter ou web com Flask/Django
 
