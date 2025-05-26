@@ -27,13 +27,13 @@ def exibir_opcoes():
     - Quais são elas?
     1. Cadastrar Restaurante
     2. Listar Restaurantes
-    3. Ativar Restaurante
+    3. Ativar/Desativar Restaurante
     4. Sair -> Encerra a execução do sistema
     
     '''
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
-    print('3. Ativar restaurante')
+    print('3. Ativar/Desativar restaurante')
     print('4. Sair \n')
     
 def limpar_tela():
@@ -55,7 +55,7 @@ def voltar_ao_menu_principal():
     usa a função 'limpar_tela()' multiplataformas, e, 
     usa a função main para retornar ao inicio do programa
     '''
-    input('\nDigite uma tecla para voltar ao menu: ')
+    input('\nTecle [Enter] para retornar ao Menu Principal: ')
     limpar_tela()
     main()
 
@@ -82,7 +82,7 @@ def exibir_subtitulo(texto):
     print(texto)
     print()
 
-def cadastrar_novo_restaurante():
+def cadastrar_restaurante():
     '''
     Função responsavel por cadastrar restaurante usando inputs abaixo.
 
@@ -97,9 +97,9 @@ def cadastrar_novo_restaurante():
     - Essa função não retorna outputs
     
     '''
-    exibir_subtitulo('Cadastrar novo restaurante')
-    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
-    categoria_do_restaurante = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
+    exibir_subtitulo('Cadastrar restaurante')
+    nome_do_restaurante = input('Insira o nome do restaurante: ')
+    categoria_do_restaurante = input(f'Insira a categoria do restaurante "{nome_do_restaurante}": ')
     dados_cadastrados = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
     lista_restaurantes.append(dados_cadastrados)
     voltar_ao_menu_principal()
@@ -214,13 +214,13 @@ def status_atividade_restaurantes():
     palavra_ativar_desativar = 'ativar' if ativar else 'desativar'
 
     try:
-        id_ativar_desativar_restaurante = int(input(f'Digite o ID do restaurante que deseja {palavra_ativar_desativar}: '))
+        id_ativar_desativar_restaurante = int(input(f'insira o ID do restaurante que deseja {palavra_ativar_desativar}: '))
     except:
         escolha_invalida()
 
     lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] = True if ativar else False
     mensagem_ativacao_desativacao = 'ativado com Sucesso'if lista_restaurantes[id_ativar_desativar_restaurante]['ativo'] == True else f'desativado com sucesso'
-    print(f'\nRestaurante {lista_restaurantes[id_ativar_desativar_restaurante]['nome']} {mensagem_ativacao_desativacao}')
+    print(f'\nO restaurante "{lista_restaurantes[id_ativar_desativar_restaurante]['nome']}" foi {mensagem_ativacao_desativacao}')
 
     voltar_ao_menu_principal()
     
@@ -236,11 +236,11 @@ def escolher_opcoes():
         *escolha_usuario
     '''
     try:
-        escolha_usuario = int(input('Digite o número da opção escolhida: '))
+        escolha_usuario = int(input('Escolha uma das opções usando (1, 2, 3 ou 4): '))
         limpar_tela()
 
         if escolha_usuario == 1:
-            cadastrar_novo_restaurante()
+            cadastrar_restaurante()
         elif escolha_usuario == 2:
             listar_restaurante()
         elif escolha_usuario == 3:
