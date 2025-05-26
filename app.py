@@ -154,19 +154,34 @@ def listar_restaurante():
 
 def status_atividade_restaurantes():
     '''
-    Função responsavel por exibir dados armazenados e realizar ativação/desativação de restaurante de acordo com entrada fornecida pelo usuário.
+    Exibe a lista de restaurantes e permite ao usuário ativar ou desativar um restaurante.
 
-    - Funções chamadas: 
-        * exibir_subtitulo('Ativar/Desativar Restaurante') - usando argumento
+    - Ações realizadas:
+        * Exibe subtítulo "Ativar/Desativar Restaurante"
+        * Lista todos os restaurantes cadastrados com seus respectivos IDs
+        * Solicita ao usuário a escolha entre:
+            - Ativar restaurante
+            - Desativar restaurante
+            - Voltar ao menu principal
+        * Solicita o ID do restaurante desejado
+        * Atualiza o status "ativo" do restaurante na lista
+
+    - Inputs:
+        * Opção de ação (1: Ativar | 2: Desativar | 3: Menu Principal)
+        * ID do restaurante a ser ativado/desativado
+
+    - Efeitos colaterais:
+        * Modifica o status do restaurante selecionado dentro da lista global `lista_restaurantes`
+
+    - Saídas visuais (print):
+        * Mensagem de confirmação: "Restaurante [nome] ativado/desativado com sucesso"
+        * Mensagens de erro em caso de entrada inválida
+
+    - Funções auxiliares utilizadas:
+        * exibir_subtitulo(titulo)
         * listagem_restaurantes()
         * voltar_ao_menu_principal()
-
-        - inputs: 
-            *Ativação
-
-        - outputs: 
-            * Restaurante {lista_restaurantes[ativacao]['nome']} {mensagem_ativação}
-    
+        * limpar_tela()
     '''
 
     exibir_subtitulo('Ativar/Desativar Restaurante')
