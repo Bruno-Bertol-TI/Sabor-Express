@@ -1,6 +1,6 @@
 # 🍽️ Sistema de Cadastro e Gerenciamento de Restaurantes
 
-Este é um aplicativo simples em Python para cadastro e listagem de restaurantes. Ele funciona no terminal e é ideal para fins educacionais, aprendendo conceitos básicos de Python como listas, funções, entrada do usuário e estruturas condicionais.
+Este é um aplicativo em Python para cadastro, listagem e ativação/desativação de restaurantes. O projeto é modularizado em múltiplos arquivos, ideal para fins educacionais e para aprender princípios de organização de código em Python com importações, classes, funções e menu interativo no terminal.
 
 ---
 
@@ -13,39 +13,55 @@ Este é um aplicativo simples em Python para cadastro e listagem de restaurantes
   - Listar restaurantes cadastrados
   - Ativar/Desativar restaurante
   - Sair
+- ✅ Código organizado em múltiplos arquivos com importações
+- ✅ Classe `Restaurante` com atributos e métodos para controle de dados
 
 ---
 
 ## 💻 Como Executar
 
 1. Certifique-se de ter o **Python 3.x** instalado.
-2. Clone este repositório ou copie o código para um arquivo chamado, por exemplo, `app.py`.
-3. No terminal, navegue até a pasta onde está o arquivo.
+2. Clone este repositório ou copie os arquivos para uma pasta local.
+3. No terminal, navegue até a pasta onde estão os arquivos.
 4. Execute com:
 
 ```bash
-python app.py
+python main.py
 ```
 
 ---
 
-## 📂 Estrutura do Código
+## 📂 Estrutura de Arquivos
 
-| Função                          | Descrição                                                                 |
-|--------------------------------|---------------------------------------------------------------------------|
-| `main()`                       | Ponto de entrada do app                                                   |
-| `exibir_nome_do_programa()`    | Exibe o banner ASCII com o nome do programa                               |
-| `exibir_opcoes()`              | Mostra o menu principal com as opções disponíveis                         |
-| `limpar_tela()`                | Limpa a tela do terminal (Windows: `cls`, Linux/macOS: `clear`)           |
-| `voltar_ao_menu_principal()`   | Aguarda entrada e retorna ao menu principal                               |
-| `opcao_invalida()`             | Exibe mensagem de erro e retorna ao menu principal                        |
-| `exibir_subtitulo()`           | Mostra um subtítulo formatado para cada operação                          |
-| `cadastrar_novo_restaurante()` | Solicita nome e categoria do restaurante e o adiciona à lista             |
-| `listagem_restaurantes()`      | Exibe em tabela nome, categoria e condição dos restaurantes cadastrados   |
-| `listar_restaurante()`         | Chama a função `listagem_restaurantes()`                                  |
-| `status_atividade_restaurantes()` | Exibe os restaurantes e permite ativar/desativar via ID                  |
-| `finalizar_app()`              | Exibe mensagem de finalização do app                                      |
-| `escolher_opcoes()`            | Lê a escolha do usuário e chama a função correspondente                   |
+| Arquivo           | Função Principal                                                  |
+|-------------------|-------------------------------------------------------------------|
+| `main.py`         | Ponto de entrada. Gerencia o menu e o fluxo principal             |
+| `restaurante.py`  | Define a classe `Restaurante` e seus métodos                      |
+| `utils.py`        | Funções utilitárias para limpar tela, exibir títulos e menus      |
+
+---
+
+## 📦 Classe `Restaurante`
+
+| Método                        | Descrição                                                                 |
+|------------------------------|---------------------------------------------------------------------------|
+| `__init__()`                 | Inicializa restaurante com nome, categoria e status                       |
+| `listar_restaurantes()`     | Mostra todos os restaurantes registrados                                  |
+| `alternar_status()`         | Ativa ou desativa um restaurante                                          |
+| `exibir_restaurante()`      | Retorna representação formatada do restaurante                            |
+
+---
+
+## 🔧 Utilitários (`utils.py`)
+
+| Função                        | Descrição                                                                 |
+|------------------------------|---------------------------------------------------------------------------|
+| `limpar_tela()`              | Limpa a tela do terminal                                                  |
+| `exibir_nome_do_programa()` | Exibe o nome do sistema com arte ASCII                                    |
+| `exibir_opcoes()`           | Mostra o menu principal com as opções disponíveis                         |
+| `exibir_subtitulo()`        | Mostra um subtítulo formatado                                             |
+| `voltar_ao_menu_principal()`| Aguarda entrada do usuário para voltar ao menu                            |
+| `opcao_invalida()`          | Informa erro e volta ao menu principal                                    |
 
 ---
 
@@ -55,18 +71,15 @@ python app.py
 ✅ Linux  
 ✅ macOS
 
-O código usa a função `os.system()` com verificação de sistema operacional para limpar a tela corretamente:
-
-```python
-os.system('cls' if os.name == 'nt' else 'clear')
-```
+Uso de `os.system('cls' if os.name == 'nt' else 'clear')` para limpar a tela de forma compatível.
 
 ---
 
 ## 📌 Melhorias Futuras
 
-- [ ] Armazenamento persistente em arquivo ou banco de dados
+- [ ] Armazenamento persistente (arquivo/banco de dados)
 - [ ] Interface gráfica com Tkinter ou web com Flask/Django
+- [ ] Testes automatizados com `pytest`
 
 ---
 
