@@ -1,7 +1,36 @@
 import os
 
-lista_restaurantes = []
+class GestaoRestaurantes:
+    lista_restaurantes = []
+    
+    def __init__(self, nome, categoria):
+        self._nome = nome
+        self._categoria = categoria
+        self._ativo = False
+        GestaoRestaurantes.lista_restaurantes.append(self)
 
+    def __str__(self):
+        return self._nome, self._categoria, self._ativo
+    
+    @property
+    def nome(self):
+        return self._nome
+        
+    @property
+    def categoria(self):
+        return self._categoria
+    
+    @property
+    def ativo(self):
+        return 'Ativo' if self._ativo else 'Inativo'
+    
+    @classmethod
+    def exibir_restaurantes(cls):
+        if not cls.lista_restaurantes:
+            print('Atenção!! Nenhum cadastro registrado.')
+        for id, restaurante in enumerate(cls.lista_restaurantes):
+                print(f'| {id} | {restaurante.nome} | {restaurante.categoria} | {restaurante.ativo} |')
+    
 def exibir_nome_do_programa():
     '''Exibe o nome do sistema de forma estilizada para a interação com o usuário'''
     print("""
@@ -76,70 +105,16 @@ def exibir_subtitulo(texto):
     print()
 
 def cadastrar_restaurante():
-    '''
-    Função responsavel por cadastrar restaurante usando inputs abaixo.
-
-    - Inputs:
-        * NOME DO RESTAURANTE
-        * CATEGORIA DO RESTAURANTE
-
-    - Efeito colateral (OUTPUT):
-        Exibe subtitulo,
-        Armazena dados na lista de dicionarios 'lista_restaurantes'
-
-    - Essa função não retorna outputs
-    
-    '''
     exibir_subtitulo('Cadastrar restaurante')
-    nome_do_restaurante = input('Insira o nome do restaurante: ')
-    categoria_do_restaurante = input(f'Insira a categoria do restaurante "{nome_do_restaurante}": ')
-    dados_cadastrados = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
-    lista_restaurantes.append(dados_cadastrados)
+    restaurante = input('Digite o nome do restaurante: ').title()
+    categoria = input('Digite a categoria do restaurante: ').title()
+    GestaoRestaurantes(restaurante, categoria)
     voltar_ao_menu_principal()
 
 def listagem_restaurantes():
-    '''
-    Função responsavel por listar em formato de matriz todos os restaurantes cadastrados.
-
-    - outputs:
-        * indice,
-        * nome,
-        * categoria,
-        * condição
-        -*linhas divisorias para melhor organização - 'linha_divisoria_listagem_restaurantes'
-
-    - Função usa FOR IN para percorrer dados armazenado durante execução em lista de dicionarios
-    '''
-    linha_divisoria_listagem_restaurantes = '|' + 125 * '-' + '|'
-
-    print(linha_divisoria_listagem_restaurantes)
-    print(f"|{'ID':^25} | {'Restaurante':^35} | {'Categoria':^30} | {'Condição':^25} |")
-    print(linha_divisoria_listagem_restaurantes)
-    
-    for i, restaurante in enumerate(lista_restaurantes):
-        nome = restaurante['nome']
-        categoria = restaurante['categoria']
-        ativo_inativo = 'Ativo' if restaurante['ativo'] == True else 'Inativo'
-        ativo = ativo_inativo
-        print(f"|{i:^25} | {nome:<35} | {categoria:<30} | {ativo:<25} |")
-        print(linha_divisoria_listagem_restaurantes)
+    print(GestaoRestaurantes.exibir_restaurantes())
 
 def listar_restaurante():
-    '''
-    Função responsavel por apenas exibir dados armazenados
-
-    - Funções chamadas: 
-        * exibir_subtitulo('Listar restaurantes') - usando argumento
-        * listagem_restaurantes()
-        * voltar_ao_menu_principal()
-
-    - outputs:
-        * Todos restaurantes cadastrados foram listado acima!
-        *-Efeitos Colaterais: 
-            * exibir_subtitulo('Listar restaurantes') - usando argumento
-            * listagem_restaurantes()
-
-    '''
     exibir_subtitulo('Listar restaurantes')
     listagem_restaurantes()
     print('\nTodos restaurantes cadastrados foram listado acima!')
@@ -154,53 +129,52 @@ def status_atividade_restaurantes():
         print(' 1. Ativar restaurante.')
         print(' 2. Desativar restaurante.')
         print(' 3. Retornar ao Menu Principal.\n')
-        try:
-            opcao_escolhida = int(input('Insira a opção escolhida: '))
-            if opcao_escolhida not in [1, 2, 3]:
-                limpar_tela()
-                print('\nOpção invalida, tente novamente!\n')
-                input('Tecle [Enter] para retornar ao menu.')
-                continue
-            elif opcao_escolhida in [1, 2]:
-                ativar = True if opcao_escolhida == 1 else False
-                limpar_tela()
-                if ativar:
-                    todos_ativos = all(restaurante['ativo'] for restaurante in lista_restaurantes)
-                    if todos_ativos:
-                        print('todos os restaurantes estão ativos!')
-                        voltar_ao_menu_principal()
-                else:
-                    todos_inativos = all(not restaurante['ativo'] for restaurante in lista_restaurantes)
-                    if todos_inativos:
-                        print('todos os restaurantes estão inativos!')
-                        voltar_ao_menu_principal()
+        # try:
+        #     opcao_escolhida = int(input('Insira a opção escolhida: '))
+        #     if opcao_escolhida not in [1, 2, 3]:
+        #         limpar_tela()
+        #         print('\nOpção invalida, tente novamente!\n')
+        #         input('Tecle [Enter] para retornar ao menu.')
+        #         continue
+        #     elif opcao_escolhida in [1, 2]:
+        #         ativar = True if opcao_escolhida == 1 else False
+        #         limpar_tela()
+        #         if ativar:
+        #             todos_ativos = all(restaurante['ativo'] for restaurante in lista_restaurantes)
+        #             if todos_ativos:
+        #                 print('todos os restaurantes estão ativos!')
+        #                 voltar_ao_menu_principal()
+        #         else:
+        #             todos_inativos = all(not restaurante['ativo'] for restaurante in lista_restaurantes)
+        #             if todos_inativos:
+        #                 print('todos os restaurantes estão inativos!')
+        #                 voltar_ao_menu_principal()
                     
-            elif opcao_escolhida == 3:
-                voltar_ao_menu_principal()
-        except ValueError:
-            print('\nEntrada Inválida, digite um número!\n')
-            continue
+        #     elif opcao_escolhida == 3:
+        #         voltar_ao_menu_principal()
+        # except ValueError:
+        #     print('\nEntrada Inválida, digite um número!\n')
+        #     continue
 
-        ativar_desativar = 'ativar' if ativar else 'desativar'
+        # ativar_desativar = 'ativar' if ativar else 'desativar'
 
-        while True:    
-            try:
-                limpar_tela()
-                listagem_restaurantes()
-                print(f'\nVocê escolheu {ativar_desativar} um restaurante!\n')
-                id_restaurante = int(input(f'insira o ID do restaurante que deseja {ativar_desativar}: '))
-            except ValueError:
-                print('\n ID inválido, Tente um ID existente na lista! \n')
-                continue
+        # while True:    
+        #     try:
+        #         limpar_tela()
+        #         listagem_restaurantes()
+        #         print(f'\nVocê escolheu {ativar_desativar} um restaurante!\n')
+        #         id_restaurante = int(input(f'insira o ID do restaurante que deseja {ativar_desativar}: '))
+        #     except ValueError:
+        #         print('\n ID inválido, Tente um ID existente na lista! \n')
+        #         continue
 
-            lista_restaurantes[id_restaurante]['ativo'] = True if ativar else False
-            mensagem_formatada_com_sucesso = 'ativado com Sucesso'if lista_restaurantes[id_restaurante]['ativo'] == True else f'desativado com sucesso'
-            print(f'\nO restaurante "{lista_restaurantes[id_restaurante]['nome']}" foi {mensagem_formatada_com_sucesso}')
+        #     lista_restaurantes[id_restaurante]['ativo'] = True if ativar else False
+        #     mensagem_formatada_com_sucesso = 'ativado com Sucesso'if lista_restaurantes[id_restaurante]['ativo'] == True else f'desativado com sucesso'
+        #     print(f'\nO restaurante "{lista_restaurantes[id_restaurante]['nome']}" foi {mensagem_formatada_com_sucesso}')
 
-            voltar_ao_menu_principal()
+        voltar_ao_menu_principal()
     
 def finalizar_app():
-    '''Finaliza o app'''
     exibir_subtitulo('Finalizar APP')
 
 def escolher_opcoes():
@@ -219,7 +193,9 @@ def escolher_opcoes():
         elif escolha_usuario == 2:
             listar_restaurante()
         elif escolha_usuario == 3:
-            status_atividade_restaurantes()
+            # status_atividade_restaurantes()
+            print('Opção desativada por bugs severos')
+            voltar_ao_menu_principal()
         elif escolha_usuario == 4:
             finalizar_app()
         else:
