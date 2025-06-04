@@ -21,7 +21,6 @@ def cadastro_em_massa():
     print('cadastro em massa concluido...')
     utils.pausar()
 
-
 # função principal subistituida apenas para testes
 def cadastrar_restaurante():
     utils.limpar_tela()
@@ -36,6 +35,12 @@ def listar_restaurantes():
     utils.limpar_tela()
     print('Lista de Restaurantes:')
     Restaurante.exibir_restaurantes()
+    utils.pausar()
+
+def listar_avaliacoes():
+    utils.limpar_tela()
+    print('Lista de avaliações:')
+    Restaurante.exibir_avaliacoes()
     utils.pausar()
 
 def ativar_desativar_restaurante():
@@ -84,7 +89,6 @@ def avaliar_restaurantes():
         utils.pausar()
         break
     
-
 def main():
     while True:
         utils.limpar_tela()
@@ -97,10 +101,12 @@ def main():
         elif opcao == 2:
             listar_restaurantes()
         elif opcao == 3:
-            ativar_desativar_restaurante()
+            listar_avaliacoes()
         elif opcao == 4:
-            avaliar_restaurantes()
+            ativar_desativar_restaurante()
         elif opcao == 5:
+            avaliar_restaurantes()
+        elif opcao == 6:
             print('Saindo do sistema...')
             break
         else:

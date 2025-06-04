@@ -44,8 +44,16 @@ class Restaurante:
         print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} |")
         for id, r in enumerate(cls.lista_restaurantes):
             print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} |")
+
+    @classmethod
+    def exibir_avaliacoes(cls):
+        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | | {'Cliente':<20} - {'Nota':^5} |")
+        for id, r in enumerate(cls.lista_restaurantes):
             if r.avaliacao:
-                print(f'| Avaliações: {r.nome} | {r.avaliacao} |')
+                print(f'| Avaliações: |')
+                for a in r.avaliacao:
+                    print(f'| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} |  {a.cliente:<20} -  {a.nota:^5} |')
+        print('Não há avaliações a serem exibidas')
 
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)
