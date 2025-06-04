@@ -1,3 +1,5 @@
+from modelos.avaliacao import Avaliacao
+
 class Restaurante:
     lista_restaurantes = []
     
@@ -5,6 +7,7 @@ class Restaurante:
         self._nome = nome
         self._categoria = categoria
         self._ativo = False
+        self._avaliacao = []
         Restaurante.lista_restaurantes.append(self)
 
     def __str__(self):
@@ -37,3 +40,7 @@ class Restaurante:
         print(f"{'ID':<3} {'Nome':<20} {'Categoria':<15} {'Status':<8}")
         for id, r in enumerate(cls.lista_restaurantes):
             print(f"{id:<3} {r.nome:<20} {r.categoria:<15} {r.ativo:<8}")
+
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente, nota)
+        self._avaliacao.append(avaliacao)

@@ -1,5 +1,6 @@
-from restaurante import Restaurante
-import utils
+from modelos.restaurante import Restaurante
+from modelos import utils
+from modelos.avaliacao import Avaliacao
 
 def cadastrar_restaurante():
     utils.limpar_tela()
