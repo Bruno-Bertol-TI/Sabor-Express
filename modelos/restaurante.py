@@ -32,6 +32,10 @@ class Restaurante:
     def ativo(self):
         return 'Ativo' if self._ativo else 'Inativo'
     
+    @property
+    def avaliacao(self):
+        return self._avaliacao
+    
     @classmethod
     def exibir_restaurantes(cls):
         if not cls.lista_restaurantes:
@@ -40,6 +44,8 @@ class Restaurante:
         print(f"{'ID':<3} {'Nome':<20} {'Categoria':<15} {'Status':<8}")
         for id, r in enumerate(cls.lista_restaurantes):
             print(f"{id:<3} {r.nome:<20} {r.categoria:<15} {r.ativo:<8}")
+            if r.avaliacao:
+                print(f'| Avaliações: {r.nome} | {r.avaliacao}')
 
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)

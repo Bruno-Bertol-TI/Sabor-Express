@@ -1,6 +1,5 @@
 from modelos.restaurante import Restaurante
 from modelos import utils
-from modelos.avaliacao import Avaliacao
 
 def cadastrar_restaurante():
     utils.limpar_tela()
@@ -39,19 +38,46 @@ def ativar_desativar_restaurante():
         print('Entrada inválida.')
     utils.pausar()
 
-def main():
-    utils.limpar_tela()
-    utils.exibir_titulo()
+def avaliar_restaurantes():
     while True:
+        utils.limpar_tela()
+        print('Avaliação de restaurantes')
+        Restaurante.exibir_restaurantes()
+        idx_restaurante = int(input('Digite o ID do restaurante: '))
+        if 0 < idx_restaurante > len(Restaurante.lista_restaurantes):
+            print('Restaurante não encontrado!')
+            continue
+
+        cliente = input('Digite seu nome: ')
+        nota = int(input('Digite uma nota de 0 até 10: '))
+
+        if 0 > nota > 10:
+            continue
+        
+        restaurante_avaliado = Restaurante.lista_restaurantes[idx_restaurante]
+        restaurante_avaliado.receber_avaliacao(cliente, nota)
+        utils.limpar_tela()
+        print('Avaliação salva com sucesso.')
+        print(restaurante_avaliado)
+        utils.pausar()
+        break
+    
+
+def main():
+    while True:
+        utils.limpar_tela()
+        utils.exibir_titulo()
         utils.exibir_menu()
-        opcao = input('Escolha uma opção: ').strip()
-        if opcao == '1':
+        opcao = int(input('Escolha uma opção: ').strip())
+        if opcao == 1:
             cadastrar_restaurante()
-        elif opcao == '2':
+        elif opcao == 2:
             listar_restaurantes()
-        elif opcao == '3':
+        elif opcao == 3:
             ativar_desativar_restaurante()
-        elif opcao == '4':
+        elif opcao == 4:
+            avaliar_restaurantes()
+        elif opcao == 5:
             print('Saindo do sistema...')
             break
         else:

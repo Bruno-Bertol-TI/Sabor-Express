@@ -13,7 +13,8 @@ def exibir_menu():
     1. Cadastrar restaurante
     2. Listar restaurantes
     3. Ativar / Desativar restaurante
-    4. Sair
+    4. Avaliar restaurantes
+    5. Sair
     """)
 
 def pausar():
