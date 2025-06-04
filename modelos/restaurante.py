@@ -41,11 +41,11 @@ class Restaurante:
         if not cls.lista_restaurantes:
             print('Nenhum restaurante cadastrado.')
             return
-        print(f"{'ID':<3} {'Nome':<20} {'Categoria':<15} {'Status':<8}")
+        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} |")
         for id, r in enumerate(cls.lista_restaurantes):
-            print(f"{id:<3} {r.nome:<20} {r.categoria:<15} {r.ativo:<8}")
+            print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} |")
             if r.avaliacao:
-                print(f'| Avaliações: {r.nome} | {r.avaliacao}')
+                print(f'| Avaliações: {r.nome} | {r.avaliacao} |')
 
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)

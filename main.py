@@ -1,6 +1,28 @@
 from modelos.restaurante import Restaurante
 from modelos import utils
 
+def cadastro_em_massa():
+    restaurantes = [
+    ("Sabor Express", "Comida Brasileira"),
+    ("La Pasta", "Culinária Italiana"),
+    ("Tokyo Sushibar", "Culinária Japonesa"),
+    ("Burger House", "Lanches"),
+    ("Casa do Norte", "Comida Nordestina"),
+    ("Green Veggie", "Comida Vegetariana"),
+    ("Doce Delícia", "Confeitaria"),
+    ("El Mexicano", "Culinária Mexicana"),
+    ("Le Bistrô", "Culinária Francesa"),
+    ("Wok To Go", "Comida Asiática Rápida")
+]
+    
+    for nome, categoria in restaurantes:
+        Restaurante(nome, categoria)
+
+    print('cadastro em massa concluido...')
+    utils.pausar()
+
+
+# função principal subistituida apenas para testes
 def cadastrar_restaurante():
     utils.limpar_tela()
     print('Cadastrar Restaurante')
@@ -70,7 +92,8 @@ def main():
         utils.exibir_menu()
         opcao = int(input('Escolha uma opção: ').strip())
         if opcao == 1:
-            cadastrar_restaurante()
+            cadastro_em_massa()
+            # cadastrar_restaurante()
         elif opcao == 2:
             listar_restaurantes()
         elif opcao == 3:
