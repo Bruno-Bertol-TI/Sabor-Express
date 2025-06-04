@@ -1,5 +1,6 @@
 from modelos.restaurante import Restaurante
 from modelos import utils
+import random
 
 def cadastro_em_massa():
     restaurantes = [
@@ -65,6 +66,22 @@ def ativar_desativar_restaurante():
         print('Entrada inválida.')
     utils.pausar()
 
+def avaliacoes_em_massa():
+    nomes_teste = ['Bruno', 'Ana', 'Carlos', 'Fernanda', 'João', 'Marina', 'Luiz', 'Paula', 'Roberta', 'Felipe']
+
+    if not Restaurante.lista_restaurantes:
+        print('Nenhum restaurante cadastrado para avaliar.')
+        return
+    
+    for restaurante in Restaurante.lista_restaurantes:
+        for _ in range(10):
+            cliente = random.choice(nomes_teste)
+            nota = random.randint(0, 10)
+            restaurante.receber_avaliacao(cliente, nota)
+        print(f'Avaliações cadastradas para o restaurante: {restaurante.nome}')
+
+
+# Função principal de avaliacao de restaurantes
 def avaliar_restaurantes():
     while True:
         utils.limpar_tela()
@@ -105,7 +122,8 @@ def main():
         elif opcao == 4:
             ativar_desativar_restaurante()
         elif opcao == 5:
-            avaliar_restaurantes()
+            avaliacoes_em_massa()
+            # avaliar_restaurantes()
         elif opcao == 6:
             print('Saindo do sistema...')
             break
