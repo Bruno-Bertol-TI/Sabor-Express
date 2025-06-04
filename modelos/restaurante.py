@@ -38,22 +38,26 @@ class Restaurante:
     
     @classmethod
     def exibir_restaurantes(cls):
+        linha_divisoria_exibir_restaurantes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} +'
         if not cls.lista_restaurantes:
             print('Nenhum restaurante cadastrado.')
             return
         print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} |")
+        print(linha_divisoria_exibir_restaurantes)
         for id, r in enumerate(cls.lista_restaurantes):
             print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} |")
+            print(linha_divisoria_exibir_restaurantes)
 
     @classmethod
     def exibir_avaliacoes(cls):
-        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | | {'Cliente':<20} - {'Nota':^5} |")
+        linha_divisoria_exibir_avaliacoes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} + {10 * '--'} + {5 * '-'} +'
+        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | {'Cliente':<20} | {'Nota':^5} |")
+        print(linha_divisoria_exibir_avaliacoes)
         for id, r in enumerate(cls.lista_restaurantes):
             if r.avaliacao:
-                print(f'| Avaliações: |')
                 for a in r.avaliacao:
-                    print(f'| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} |  {a.cliente:<20} -  {a.nota:^5} |')
-        print('Não há avaliações a serem exibidas')
+                    print(f'| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {a.cliente:<20} | {a.nota:^5} |')
+                    print(linha_divisoria_exibir_avaliacoes)
 
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)

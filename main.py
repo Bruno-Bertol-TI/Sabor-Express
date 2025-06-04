@@ -80,7 +80,6 @@ def avaliacoes_em_massa():
             restaurante.receber_avaliacao(cliente, nota)
         print(f'Avaliações cadastradas para o restaurante: {restaurante.nome}')
 
-
 # Função principal de avaliacao de restaurantes
 def avaliar_restaurantes():
     while True:
