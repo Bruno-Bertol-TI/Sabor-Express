@@ -1,29 +1,27 @@
-# 🍽️ Sistema de Cadastro e Gerenciamento de Restaurantes
 
-Este é um aplicativo em Python para cadastro, listagem e ativação/desativação de restaurantes. O projeto é modularizado em múltiplos arquivos, ideal para fins educacionais e para aprender princípios de organização de código em Python com importações, classes, funções e menu interativo no terminal.
+# 🍽️ Sistema de Cadastro e Avaliação de Restaurantes
+
+Este é um sistema de gerenciamento de restaurantes feito em Python. Ele permite cadastrar, ativar/desativar e avaliar restaurantes. O projeto é modularizado e estruturado para fins educacionais, com foco em boas práticas de organização de código, uso de classes, métodos, menus interativos e operações em terminal.
 
 ---
 
-## 🧠 Funcionalidades
+## 🚀 Funcionalidades
 
-- ✅ Exibe o nome do programa com um banner ASCII estilizado  
-- ✅ Limpa a tela automaticamente (compatível com Windows, Linux e macOS)  
-- ✅ Menu interativo com as opções:
-  - Cadastrar novo restaurante
-  - Listar restaurantes cadastrados
-  - Ativar/Desativar restaurante
-  - Sair
-- ✅ Código organizado em múltiplos arquivos com importações
-- ✅ Classe `Restaurante` com atributos e métodos para controle de dados
+- 📋 Cadastrar restaurantes manualmente ou em massa
+- 🗂️ Listar restaurantes com status (Ativo/Inativo)
+- 🔄 Ativar ou desativar restaurantes
+- 📝 Avaliar restaurantes manualmente ou com geração em massa
+- ⭐ Visualizar todas as avaliações cadastradas
+- 💡 Interface de terminal limpa e interativa (compatível com Windows/Linux/macOS)
+- 📦 Código separado por módulos para melhor organização
 
 ---
 
 ## 💻 Como Executar
 
-1. Certifique-se de ter o **Python 3.x** instalado.
-2. Clone este repositório ou copie os arquivos para uma pasta local.
-3. No terminal, navegue até a pasta onde estão os arquivos.
-4. Execute com:
+1. Tenha o **Python 3.x** instalado na sua máquina.
+2. Clone este repositório ou copie os arquivos do projeto para uma pasta local.
+3. No terminal, navegue até essa pasta e execute:
 
 ```bash
 python main.py
@@ -33,57 +31,79 @@ python main.py
 
 ## 📂 Estrutura de Arquivos
 
-| Arquivo           | Função Principal                                                  |
-|-------------------|-------------------------------------------------------------------|
-| `main.py`         | Ponto de entrada. Gerencia o menu e o fluxo principal             |
-| `restaurante.py`  | Define a classe `Restaurante` e seus métodos                      |
-| `utils.py`        | Funções utilitárias para limpar tela, exibir títulos e menus      |
+```
+|- modelos/
+|  |- avaliacao.py        # Classe que representa uma avaliação (cliente + nota)
+|  |- restaurante.py      # Classe Restaurante com métodos para cadastro, status e avaliações
+|  |- utils.py            # Funções utilitárias para terminal
+|- main.py                # Arquivo principal: menu e fluxo principal do sistema
+|- README.md              # Documentação do projeto
+```
 
 ---
 
-## 📦 Classe `Restaurante`
+## 🧱 Classes
 
-| Método                        | Descrição                                                                 |
-|------------------------------|---------------------------------------------------------------------------|
-| `__init__()`                 | Inicializa restaurante com nome, categoria e status                       |
-| `listar_restaurantes()`     | Mostra todos os restaurantes registrados                                  |
-| `alternar_status()`         | Ativa ou desativa um restaurante                                          |
-| `exibir_restaurante()`      | Retorna representação formatada do restaurante                            |
-
----
-
-## 🔧 Utilitários (`utils.py`)
-
-| Função                        | Descrição                                                                 |
-|------------------------------|---------------------------------------------------------------------------|
-| `limpar_tela()`              | Limpa a tela do terminal                                                  |
-| `exibir_nome_do_programa()` | Exibe o nome do sistema com arte ASCII                                    |
-| `exibir_opcoes()`           | Mostra o menu principal com as opções disponíveis                         |
-| `exibir_subtitulo()`        | Mostra um subtítulo formatado                                             |
-| `voltar_ao_menu_principal()`| Aguarda entrada do usuário para voltar ao menu                            |
-| `opcao_invalida()`          | Informa erro e volta ao menu principal                                    |
+### 📍 `Restaurante` (`modelos/restaurante.py`)
+| Método / Propriedade       | Descrição                                                                 |
+|----------------------------|---------------------------------------------------------------------------|
+| `__init__(nome, categoria)`| Cria um novo restaurante com nome, categoria e status inativo             |
+| `ativo`                    | Retorna string "Ativo" ou "Inativo" com base no status booleano           |
+| `is_ativo` / `set_ativo()` | Propriedades para manipular o status do restaurante                       |
+| `avaliacao`                | Lista de avaliações recebidas                                             |
+| `receber_avaliacao()`      | Adiciona uma nova avaliação à lista                                       |
+| `exibir_restaurantes()`    | Lista todos os restaurantes com ID, nome, categoria e status              |
+| `exibir_avaliacoes()`      | Exibe avaliações de todos os restaurantes                                 |
 
 ---
 
-## ⚙️ Compatibilidade
-
-✅ Windows  
-✅ Linux  
-✅ macOS
-
-Uso de `os.system('cls' if os.name == 'nt' else 'clear')` para limpar a tela de forma compatível.
-
----
-
-## 📌 Melhorias Futuras
-
-- [ ] Armazenamento persistente (arquivo/banco de dados)
-- [ ] Interface gráfica com Tkinter ou web com Flask/Django
-- [ ] Testes automatizados com `pytest`
+### ⭐ `Avaliacao` (`modelos/avaliacao.py`)
+| Método / Propriedade  | Descrição                                        |
+|-----------------------|--------------------------------------------------|
+| `__init__(cliente, nota)` | Inicializa a avaliação com cliente e nota   |
+| `__str__()`           | Retorna a avaliação formatada                   |
+| `cliente`             | Nome do cliente                                 |
+| `nota`                | Nota atribuída ao restaurante (0 a 10)          |
 
 ---
 
-## 🧑‍💻 Autor
+## 🔧 Utilitários (`modelos/utils.py`)
 
-Desenvolvido por **Bruno Bertol**  
-🔗 [LinkedIn](https://www.linkedin.com/in/bruno-bertol-894267209)
+| Função               | Descrição                                                             |
+|----------------------|----------------------------------------------------------------------|
+| `limpar_tela()`      | Limpa a tela do terminal conforme o sistema operacional              |
+| `exibir_titulo()`    | Exibe o cabeçalho estilizado do sistema                              |
+| `exibir_menu()`      | Mostra as opções do menu principal                                   |
+| `pausar()`           | Aguarda o usuário pressionar ENTER antes de continuar                |
+
+---
+
+## 🎮 Menu Interativo (`main.py`)
+
+| Opção                     | Ação Realizada                                            |
+|--------------------------|-----------------------------------------------------------|
+| 1. Cadastrar restaurante | Cadastra restaurantes em massa (ou manualmente)           |
+| 2. Listar restaurantes   | Exibe todos os restaurantes registrados                   |
+| 3. Listar avaliações     | Exibe todas as avaliações feitas nos restaurantes         |
+| 4. Ativar / Desativar    | Altera o status (ativo/inativo) de um restaurante         |
+| 5. Avaliar restaurantes  | Avalia restaurantes manualmente ou com geração automática |
+| 6. Sair                  | Finaliza o sistema                                         |
+
+---
+
+## 🤓 Observações
+
+- O sistema foi desenvolvido com fins educacionais e simula funcionalidades básicas de um sistema de cadastro e avaliação.
+- Avaliações podem ser feitas manualmente ou com dados fictícios gerados automaticamente (nome e nota aleatória).
+
+---
+
+## 📌 Requisitos
+
+- Python 3.7+
+- Sistema operacional com terminal (Windows, Linux ou macOS)
+
+## ⭐ Autor
+
+📎 Me encontre no [LinkedIn](https://www.linkedin.com/in/seu-usuario)  
+🐙 Veja meus projetos no [GitHub](https://github.com/seu-usuario)
