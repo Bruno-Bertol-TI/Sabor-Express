@@ -49,24 +49,31 @@ def listar_avaliacoes():
 def ativar_desativar_restaurante():
     utils.limpar_tela()
     print('Ativar / Desativar Restaurante')
+    opcao = utils.em_massa()
     Restaurante.exibir_restaurantes()
     if not Restaurante.lista_restaurantes:
         utils.pausar()
         return
 
-    try:
-        idx = int(input('Digite o ID do restaurante: '))
-        if 0 <= idx < len(Restaurante.lista_restaurantes):
-            restaurante = Restaurante.lista_restaurantes[idx]
-            novo_status = not restaurante.is_ativo
-            restaurante.set_ativo(novo_status)
-            status_str = 'Ativado' if novo_status else 'Desativado'
-            print(f'Restaurante "{restaurante.nome}" {status_str} com sucesso!')
-        else:
-            print('ID inválido.')
-    except ValueError:
-        print('Entrada inválida.')
-    utils.pausar()
+    if opcao == 1 :
+        executar_ativar_desativar = int(input('[1] Ativar\n[2] Desativar: '))
+        novo_status = True if executar_ativar_desativar == 1 else False
+        for r in Restaurante.lista_restaurantes:
+            r.set_ativo(novo_status)
+    elif opcao == 2:
+        try:
+            idx = int(input('Digite o ID do restaurante: '))
+            if 0 <= idx < len(Restaurante.lista_restaurantes):
+                restaurante = Restaurante.lista_restaurantes[idx]
+                novo_status = not restaurante.is_ativo
+                restaurante.set_ativo(novo_status)
+                status_str = 'Ativado' if novo_status else 'Desativado'
+                print(f'Restaurante "{restaurante.nome}" {status_str} com sucesso!')
+            else:
+                print('ID inválido.')
+        except ValueError:
+            print('Entrada inválida.')
+        utils.pausar()
 
 def avaliacoes_em_massa():
     nomes_teste = ['Bruno', 'Ana', 'Carlos', 'Fernanda', 'João', 'Marina', 'Luiz', 'Paula', 'Roberta', 'Felipe']
