@@ -45,15 +45,16 @@ python main.py
 ## 🧱 Classes
 
 ### 📍 `Restaurante` (`modelos/restaurante.py`)
-| Método / Propriedade       | Descrição                                                                 |
-|----------------------------|---------------------------------------------------------------------------|
-| `__init__(nome, categoria)`| Cria um novo restaurante com nome, categoria e status inativo             |
-| `ativo`                    | Retorna string "Ativo" ou "Inativo" com base no status booleano           |
-| `is_ativo` / `set_ativo()` | Propriedades para manipular o status do restaurante                       |
-| `avaliacao`                | Lista de avaliações recebidas                                             |
-| `receber_avaliacao()`      | Adiciona uma nova avaliação à lista                                       |
-| `exibir_restaurantes()`    | Lista todos os restaurantes com ID, nome, categoria e status              |
-| `exibir_avaliacoes()`      | Exibe avaliações de todos os restaurantes                                 |
+| Método / Propriedade       | Descrição                                                                  |
+|----------------------------|----------------------------------------------------------------------------|
+| `__init__(nome, categoria)`| Cria um novo restaurante com nome, categoria e status inativo              |
+| `ativo`                    | Retorna string "Ativo" ou "Inativo" com base no status booleano            |
+| `is_ativo` / `set_ativo()` | Propriedades para manipular o status do restaurante                        |
+| `avaliacao`                | Lista de avaliações recebidas                                              |
+| `receber_avaliacao()`      | Adiciona uma nova avaliação à lista                                        |
+| `exibir_restaurantes()`    | Lista todos os restaurantes com ID, nome, categoria, status e classificação|
+| `exibir_avaliacoes()`      | Exibe avaliações de todos os restaurantes                                  |
+| `media`                    | Calcula a clasificação media e retorna a nota média do restaurante         |
 
 ---
 
@@ -82,11 +83,11 @@ python main.py
 
 | Opção                     | Ação Realizada                                            |
 |--------------------------|-----------------------------------------------------------|
-| 1. Cadastrar restaurante | Cadastra restaurantes em massa (ou manualmente)           |
+| 1. Cadastrar restaurante | Cadastra restaurantes manualmente (cadastro em massa para testes)           |
 | 2. Listar restaurantes   | Exibe todos os restaurantes registrados                   |
 | 3. Listar avaliações     | Exibe todas as avaliações feitas nos restaurantes         |
 | 4. Ativar / Desativar    | Altera o status (ativo/inativo) de um restaurante         |
-| 5. Avaliar restaurantes  | Avalia restaurantes manualmente ou com geração automática |
+| 5. Avaliar restaurantes  | Avalia restaurantes manualmente (avaliacao em massa para testes) |
 | 6. Sair                  | Finaliza o sistema                                         |
 
 ---
