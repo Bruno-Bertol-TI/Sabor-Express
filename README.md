@@ -9,7 +9,7 @@ Este é um sistema de gerenciamento de restaurantes feito em Python. Ele permite
 
 - 📋 Cadastrar restaurantes manualmente ou em massa
 - 🗂️ Listar restaurantes com status (Ativo/Inativo)
-- 🔄 Ativar ou desativar restaurantes
+- 🔄 Ativar ou desativar restaurantes em masa ou manualmente
 - 📝 Avaliar restaurantes manualmente ou com geração em massa
 - ⭐ Visualizar todas as avaliações cadastradas
 - 💡 Interface de terminal limpa e interativa (compatível com Windows/Linux/macOS)
@@ -76,6 +76,8 @@ python main.py
 | `exibir_titulo()`    | Exibe o cabeçalho estilizado do sistema                              |
 | `exibir_menu()`      | Mostra as opções do menu principal                                   |
 | `pausar()`           | Aguarda o usuário pressionar ENTER antes de continuar                |
+| `em_massa()`         | Menu para cadastro em massa ou unitario                              |
+| `quantidade_funcao_em_massa()`| retornar quantos salvamentos em massa o usuario deseja      |
 
 ---
 
@@ -83,11 +85,11 @@ python main.py
 
 | Opção                     | Ação Realizada                                            |
 |--------------------------|-----------------------------------------------------------|
-| 1. Cadastrar restaurante | Cadastra restaurantes manualmente (cadastro em massa para testes)           |
+| 1. Cadastrar restaurante | Cadastra restaurantes manualmente e em massa               |
 | 2. Listar restaurantes   | Exibe todos os restaurantes registrados                   |
 | 3. Listar avaliações     | Exibe todas as avaliações feitas nos restaurantes         |
-| 4. Ativar / Desativar    | Altera o status (ativo/inativo) de um restaurante         |
-| 5. Avaliar restaurantes  | Avalia restaurantes manualmente (avaliacao em massa para testes) |
+| 4. Ativar / Desativar    | Altera o status (ativo/inativo) de um restaurante em massa ou unitariamente|
+| 5. Avaliar restaurantes  | Avalia restaurantes manualmente (avaliacao em massa somente para testes) |
 | 6. Sair                  | Finaliza o sistema                                         |
 
 ---
