@@ -39,21 +39,21 @@ class Restaurante:
     @property
     def media(self):
         if not self._avaliacao:
-            return 0
+            return 'Não avaliado'
         notas = [a.nota for a in self._avaliacao]
         self._media = round(sum(notas) / len(notas), 2)
         return self._media
         
     @classmethod
     def exibir_restaurantes(cls):
-        linha_divisoria_exibir_restaurantes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} + {5 * '--'} +'
+        linha_divisoria_exibir_restaurantes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} + {7 * '--'} +'
         if not cls.lista_restaurantes:
             print('Nenhum restaurante cadastrado.')
             return
-        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | {'Nota média':^10} |")
+        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | {'Nota média':^14} |")
         print(linha_divisoria_exibir_restaurantes)
         for id, r in enumerate(cls.lista_restaurantes):
-            print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {r.media:^10} |")
+            print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {r.media:^14} |")
             print(linha_divisoria_exibir_restaurantes)
 
     @classmethod

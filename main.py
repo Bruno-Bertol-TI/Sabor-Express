@@ -83,9 +83,9 @@ def avaliacoes_em_massa():
         return
     
     for restaurante in Restaurante.lista_restaurantes:
-        for _ in range(10):
+        for _ in range(5):
             cliente = random.choice(nomes_teste)
-            nota = random.randint(0, 10)
+            nota = random.randint(0, 5)
             restaurante.receber_avaliacao(cliente, nota)
         print(f'Avaliações cadastradas para o restaurante: {restaurante.nome}')
 
@@ -101,9 +101,9 @@ def avaliar_restaurantes():
             continue
 
         cliente = input('Digite seu nome: ')
-        nota = int(input('Digite uma nota de 0 até 10: '))
+        nota = int(input('Digite uma nota de 0 até 5: '))
 
-        if 0 > nota > 10:
+        if 0 > nota > 5:
             continue
         
         restaurante_avaliado = Restaurante.lista_restaurantes[idx_restaurante]
