@@ -122,8 +122,12 @@ def main():
         elif opcao == 4:
             ativar_desativar_restaurante()
         elif opcao == 5:
-            avaliacoes_em_massa()
-            # avaliar_restaurantes()
+            print('Avaliações em massa apenas para testes.\n')
+            opcao = utils.em_massa()
+            if opcao == 1:
+                avaliacoes_em_massa()
+            elif opcao == 2:    
+                avaliar_restaurantes()
         elif opcao == 6:
             print('Saindo do sistema...')
             break
