@@ -2,35 +2,37 @@ from modelos.restaurante import Restaurante
 from modelos import utils
 import random
 
-def cadastro_em_massa():
-    restaurantes = [
-    ("Sabor Express", "Comida Brasileira"),
-    ("La Pasta", "Culinária Italiana"),
-    ("Tokyo Sushibar", "Culinária Japonesa"),
-    ("Burger House", "Lanches"),
-    ("Casa do Norte", "Comida Nordestina"),
-    ("Green Veggie", "Comida Vegetariana"),
-    ("Doce Delícia", "Confeitaria"),
-    ("El Mexicano", "Culinária Mexicana"),
-    ("Le Bistrô", "Culinária Francesa"),
-    ("Wok To Go", "Comida Asiática Rápida")
-]
-    
-    for nome, categoria in restaurantes:
-        Restaurante(nome, categoria)
-
-    print('cadastro em massa concluido...')
-    utils.pausar()
-
-# função principal subistituida apenas para testes
 def cadastrar_restaurante():
     utils.limpar_tela()
     print('Cadastrar Restaurante')
-    nome = input('Nome do restaurante: ').strip().title()
-    categoria = input('Categoria: ').strip().title()
-    Restaurante(nome, categoria)
-    print(f'Restaurante "{nome}" cadastrado com sucesso!')
-    utils.pausar()
+    opcao = utils.em_massa()
+    if opcao == 1:
+        restaurantes = []
+        repeticoes = utils.quantidade_funcao_em_massa()
+        i = 1
+        while i <= repeticoes:
+            print(15*'-')
+            print(f'cadastro {i}:')
+            nome = input('Nome do restaurante: ').strip().title()
+            categoria = input('Categoria: ').strip().title()
+            restaurantes.append((nome, categoria))
+            print(restaurantes[i-1], '- Cadastrado')
+            i += 1
+
+        for nome, categoria in restaurantes:
+            Restaurante(nome, categoria)
+
+        print('\nCadastro em massa concluido com sucesso!\n')
+        utils.pausar()
+    elif opcao == 2:
+        nome = input('Nome do restaurante: ').strip().title()
+        categoria = input('Categoria: ').strip().title()
+        Restaurante(nome, categoria)
+        print(f'Restaurante "{nome}" cadastrado com sucesso!')
+        utils.pausar()
+    else:
+        print('Opção inválida, retornar ao menu principal!')
+        utils.pausar()
 
 def listar_restaurantes():
     utils.limpar_tela()
@@ -112,8 +114,7 @@ def main():
         utils.exibir_menu()
         opcao = int(input('Escolha uma opção: ').strip())
         if opcao == 1:
-            cadastro_em_massa()
-            # cadastrar_restaurante()
+            cadastrar_restaurante()
         elif opcao == 2:
             listar_restaurantes()
         elif opcao == 3:

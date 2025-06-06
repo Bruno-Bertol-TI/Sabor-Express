@@ -21,3 +21,16 @@ def exibir_menu():
 def pausar():
     input("\nPressione ENTER para voltar ao menu...")
     limpar_tela()
+
+def em_massa():
+    print('[1] Em massa.')
+    print('[2] Unitário.')
+    opcao = int(input('Digite a opção 1 ou 2: '))
+    limpar_tela()
+    return opcao
+
+def quantidade_funcao_em_massa():
+    print('Opção em massa')
+    repeticoes = int(input('Quantas repetições deseja: '))
+    limpar_tela()
+    return repeticoes
