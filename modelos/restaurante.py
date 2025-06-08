@@ -78,16 +78,19 @@ class Restaurante:
         avaliacao = Avaliacao(cliente, nota)
         self._avaliacao.append(avaliacao)
 
+    @classmethod
     def cardapio_bebida(cls, nome, preco, tamanho, id):
         restaurante = cls.lista_restaurantes[id]
         cadastro_bebida = Bebida(nome, preco, tamanho)
         restaurante.cardapio[1].append(cadastro_bebida)
+        return cadastro_bebida
     
     @classmethod
     def cardapio_prato(cls, nome, preco, descricao, id):
         restaurante = cls.lista_restaurantes[id]
         cadastro_prato = Prato(nome, preco, descricao)
         restaurante.cardapio[0].append(cadastro_prato)
+        return cadastro_prato
 
     @classmethod
     def exibir_cardapio_completo(cls, id):

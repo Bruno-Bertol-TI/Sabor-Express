@@ -13,6 +13,13 @@ class Prato(ItemCardapio):
     def preco(self):
         return self._preco
 
+    @preco.setter
+    def preco(self, novo_preco):
+        self._preco = novo_preco
+
     @property
     def descricao(self):
         return self._descricao
+    
+    def aplicar_desconto(self):
+        self.preco -= (self.preco * 0.08)
