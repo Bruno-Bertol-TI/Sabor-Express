@@ -1,5 +1,7 @@
 from modelos.restaurante import Restaurante
 from modelos import utils
+from funcionalidades.cadastrar_cardapio import cadastrar_cardapio
+from funcionalidades.listar_cardapio import listar_cardapio
 import random
 
 def cadastrar_restaurante():
@@ -89,7 +91,6 @@ def avaliacoes_em_massa():
             restaurante.receber_avaliacao(cliente, nota)
         print(f'Avaliações cadastradas para o restaurante: {restaurante.nome}')
 
-# Função principal de avaliacao de restaurantes
 def avaliar_restaurantes():
     while True:
         utils.limpar_tela()
@@ -113,7 +114,7 @@ def avaliar_restaurantes():
         print(restaurante_avaliado)
         utils.pausar()
         break
-    
+
 def main():
     while True:
         utils.limpar_tela()
@@ -136,6 +137,11 @@ def main():
             elif opcao == 2:    
                 avaliar_restaurantes()
         elif opcao == 6:
+            cadastrar_cardapio()
+            pass
+        elif opcao == 7:
+            listar_cardapio()
+        elif opcao == 0:
             print('Saindo do sistema...')
             break
         else:

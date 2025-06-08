@@ -1,4 +1,6 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.prato import Prato
+from modelos.cardapio.bebida import Bebida 
 
 class Restaurante:
     lista_restaurantes = []
@@ -8,6 +10,7 @@ class Restaurante:
         self._categoria = categoria
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = [[],[]]
         Restaurante.lista_restaurantes.append(self)
 
     def __str__(self):
@@ -37,6 +40,10 @@ class Restaurante:
         return self._avaliacao
     
     @property
+    def cardapio(self):
+        return self._cardapio
+
+    @property
     def media(self):
         if not self._avaliacao:
             return 'Não avaliado'
@@ -46,14 +53,14 @@ class Restaurante:
         
     @classmethod
     def exibir_restaurantes(cls):
-        linha_divisoria_exibir_restaurantes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} + {7 * '--'} +'
+        linha_divisoria_exibir_restaurantes = f'+ {1 * '---'} + {10 * '---'} + {10 * '---'} + {4 * '--'} + {7 * '--'} + {7 * '--'} +'
         if not cls.lista_restaurantes:
             print('Nenhum restaurante cadastrado.')
-            return
-        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | {'Nota média':^14} |")
+            return 0
+        print(f"| {'ID':<3} | {'Nome':<30} | {'Categoria':<30} | {'Status':<8} | {'Nota média':^14} | {'Cardapio':^14} |")
         print(linha_divisoria_exibir_restaurantes)
         for id, r in enumerate(cls.lista_restaurantes):
-            print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {r.media:^14} |")
+            print(f"| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {r.media:^14} | {'Disponivel' if r.cardapio[0] or r.cardapio[1] else 'Indisponivel':^14} |")
             print(linha_divisoria_exibir_restaurantes)
 
     @classmethod
@@ -66,7 +73,29 @@ class Restaurante:
                 for a in r.avaliacao:
                     print(f'| {id:^3} | {r.nome:<30} | {r.categoria:<30} | {r.ativo:^8} | {a.cliente:<20} | {a.nota:^5} |')
                     print(linha_divisoria_exibir_avaliacoes)
-    
+        
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente, nota)
         self._avaliacao.append(avaliacao)
+
+    def cardapio_bebida(cls, nome, preco, tamanho, id):
+        restaurante = cls.lista_restaurantes[id]
+        cadastro_bebida = Bebida(nome, preco, tamanho)
+        restaurante.cardapio[1].append(cadastro_bebida)
+    
+    @classmethod
+    def cardapio_prato(cls, nome, preco, descricao, id):
+        restaurante = cls.lista_restaurantes[id]
+        cadastro_prato = Prato(nome, preco, descricao)
+        restaurante.cardapio[0].append(cadastro_prato)
+
+    @classmethod
+    def exibir_cardapio_completo(cls, id):
+        restaurante = cls.lista_restaurantes[id]
+        for cardapio in restaurante.cardapio:
+            if cardapio == restaurante.cardapio[0]:
+                print('Pratos')
+            elif cardapio == restaurante.cardapio[1]:
+                print('Bebidas')
+            for item in cardapio:
+                print(f'Prato: {item.nome} - Preço: {item.preco} - ' + (f'Descrição: {item.descricao}' if cardapio == restaurante.cardapio[0] else f'Tamanho: {item.tamanho}'))

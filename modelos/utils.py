@@ -15,7 +15,9 @@ def exibir_menu():
     3. Listar avaliações
     4. Ativar / Desativar restaurante
     5. Avaliar restaurantes
-    6. Sair
+    6. Cadastrar cardapio
+    7. Exibir cardapio
+    0. Sair
     """)
 
 def pausar():
